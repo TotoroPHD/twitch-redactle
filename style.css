@@ -1,0 +1,11 @@
+body
+{
+  background-color: black;
+  font-family: "Segoe UI";
+  line-height: normal;
+}
+
+.notfound {
+  color: grey;
+  background-color: grey;
+}
