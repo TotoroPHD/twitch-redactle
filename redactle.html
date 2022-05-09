@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <title>Redactle Maison</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="config.js"></script>
+  <style>
+    .notfound {
+      color: grey;
+      background-color: grey;
+    }
+  </style>
+</head>
+
+<body style="background-color: black; font-family: 'Segoe UI'">
+  <div class="w3-cell-row">
+
+    <div class="w3-container w3-twothird w3-black " id="tbf">
+      <p>Ici le texte à trouver</p>
+    </div>
+
+    <div class="w3-container w3-third w3-gray" id="words">
+      <table class="w3-table w3-striped">
+        <tr>
+          <th>Pseudo</th>
+          <th>Proposition</th>
+          <th>Occurences</th>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</body>
+
+<script>
+  var begin = "<table class=\"w3-table w3-striped\"><tr><th>Pseudo</th><th>Proposition</th><th>Occurences</th></tr>"
+  var propositions = ""
+  var end = "</table>"
+
+  var computedtext = computeText(texte)
+
+  ComfyJS.onChat = (user, message, flags, self, extra) => {
+
+    if (!message.includes(" ") && (message.length <= 26)) {
+
+      var allOccurences = document.getElementsByClassName(message);
+      for (var i =0; i < allOccurences.length; i++)
+      {
+        allOccurences[i].classList.remove("notfound");
+      }
+
+      propositions += "<tr>"
+      propositions += "<td>" + user + "</td>"
+      propositions += "<td>" + message + "</td>"
+      propositions += "<td>" + allOccurences.length + "</td>"
+      propositions += "</tr>"
+
+      document.getElementById("words").innerHTML = begin + propositions + end
+
+
+    }
+  }
+
+  document.getElementById("tbf").innerHTML = computedtext;
+  
+  function computeText(texte) {
+    var computedtext = ""
+    var lines = texte.split('\n')
+    lines.shift();
+
+    for (var i = 0; i < lines.length; i++) {
+      var words = lines[i].split(" ");
+      var curline = "";
+      for (var j = 0; j < words.length; j++) {
+        words[j] = "<span class=\"notfound " + words[j] + "\">" + words[j] + "</span>"
+        curline += words[j] + " ";
+      }
+
+      lines[i] = curline;
+
+      if (i == 0) {
+        lines[i] = "<h1>" + lines[i] + "</h1>"
+      }
+      else {
+        lines[i] = "<p>" + lines[i] + "</p>"
+      }
+
+      computedtext += lines[i];
+    }
+    console.log(lines)
+
+
+    return computedtext
+  }
+
+  ComfyJS.Init(channel);
+</script>
+
+</html>
