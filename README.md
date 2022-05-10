@@ -1,6 +1,8 @@
 # twitch-redactle
 A Redactle like game for Twitch
 
+Based on Redactle by John Turner https://twitter.com/RedactleGame
+
 Simply add the game.html file in OBS as a browser source. 
 
 Some stuff can be configured in the style.css file : 
