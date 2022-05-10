@@ -1,6 +1,12 @@
-var channel = "TotoroPHD"
+var channel = "YourChannel"
 
-//METTEZ LE TEXTE A TROUVER ENTRE LES DEUX `
+// Choisissez le mode d'input, soit message chat directement, soit par commande. 
+var customMode = "chat" // or command
+
+// Choissez la commande d'input : !customCommand input
+var customCommand = "word"
+
+// METTEZ LE TEXTE A TROUVER ENTRE LES DEUX `
 // La première ligne est le titre à trouver
 
 var texte = `
