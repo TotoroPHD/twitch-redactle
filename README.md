@@ -10,6 +10,7 @@ Some stuff can be configured in the style.css file :
 Font, line space, font colors... 
 
 In config file, first put your channel name, then paste the text you want your chat to find between the two `
+
 You can set the game mode as : 
  - chat : Every solo word input in chat is computed
  - command : Use customCommand input to compute a word. 
