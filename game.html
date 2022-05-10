@@ -1,0 +1,124 @@
+<html>
+
+<head>
+  <title>Redactle Maison</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div class="w3-cell-row">
+
+    <div class="w3-container w3-twothird w3-black " id="tbf">
+      <p>Ici le texte à trouver</p>
+    </div>
+
+    <div class="w3-container w3-third w3-gray" id="words">
+      <table class="w3-table w3-striped">
+        <tr>
+          <th>Pseudo</th>
+          <th>Mot</th>
+          <th>Nombre</th>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</body>
+
+<script>
+  var begin = "<table class=\"w3-table w3-striped\"><tr><th>Pseudo</th><th>Proposition</th><th>Occurences</th></tr>"
+  var propositions = ""
+  var end = "</table>"
+  var found = false;
+
+  var computedtext = computeText(texte)
+
+  ComfyJS.onChat = (user, message, flags, self, extra) => {
+
+    var ok = true;
+    var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàîôûïöäüë"
+    for (var i = 0; i < message.length; i++) {
+      if (!alphabet.includes(message[i].toLowerCase())) ok = false;
+    }
+
+    if (ok && message.length <= 26 && !found) {
+      var allOccurences = document.getElementsByClassName(message);
+      for (var i = 0; i < allOccurences.length; i++) {
+        allOccurences[i].classList.remove("notfound");
+      }
+
+      propositions = "<tr>" + "<td>" + user + "</td>" + "<td>" + message.toLowerCase() + "</td>" + "<td>" + allOccurences.length + "</td>" + "</tr>" + propositions
+      document.getElementById("words").innerHTML = begin + propositions + end
+
+      if (!document.getElementById("tbf").innerHTML.split('</h1>')[0].includes("notfound")) {
+        found = true;
+        var allOccurences = document.getElementsByClassName("thisisaword");
+        for (var i = 0; i < allOccurences.length; i++) {
+          allOccurences[i].classList.remove("notfound");
+        }
+      }
+    }
+  }
+
+  document.getElementById("tbf").innerHTML = computedtext;
+
+
+  function computeText(texte) {
+    var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàîôûïöäüë"
+    var computedtext = ""
+    var lines = texte.split('\n')
+    lines.shift();
+    console.log(lines);
+    var begin = 0;
+    var end = 0;
+    var outputline = "";
+    for (var i = 0; i < lines.length; i++) {
+      outputline = "";
+      if (lines[i].length > 0) {
+        var newword = "";
+        for (var j = 0; j < lines[i].length; j++) {
+          if (alphabet.includes(lines[i][j].toLowerCase())) {
+            newword += lines[i][j]
+          }
+          else {
+            if (newword.length > 0) {
+              outputline += "<span class=\"notfound thisisaword " + newword + "\">" + newword + "</span>"
+              newword = ""
+            }
+            outputline += lines[i][j]
+          }
+        }
+        if (newword.length > 0) {
+          outputline += "<span class=\"notfound thisisaword " + newword + "\">" + newword + "</span>"
+          newword = ""
+        }
+      }
+
+      else {
+        outputline = "";
+      }
+      if (i == 0) {
+        lines[i] = "<h1>" + outputline + "</h1>"
+      }
+      else {
+        lines[i] = "<p>" + outputline + "</p>"
+      }
+
+      computedtext += lines[i];
+    }
+
+
+    return computedtext
+  }
+
+  ComfyJS.Init(channel);
+</script>
+
+</html>
