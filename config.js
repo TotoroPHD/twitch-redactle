@@ -1,5 +1,4 @@
-// ICI LE NOM DE VOTRE CHAINE TWITCH
-var channel = "YourChannel"
+var channel = "TotoroPHD"
 
 //METTEZ LE TEXTE A TROUVER ENTRE LES DEUX `
 // La première ligne est le titre à trouver
@@ -40,5 +39,22 @@ San Francisco
 Où êtes-vous?
 Lizzard et Luc
 Psylvia, attendez-moi
-
+C'est une maison bleue
+Accrochée à ma mémoire
+On y vient à pied
+On ne frappe pas
+Ceux qui vivent là
+Ont jeté la clé
+Peuplée de cheveux longs
+De grands lits et de musique
+Peuplée de lumière
+Et peuplée de fous
+Elle sera dernière
+À rester debout
+Si San Francisco s'effondre
+Si San Francisco s'effondre
+San Francisco
+Où êtes-vous?
+Lizzard et Luc
+Psylvia, attendez-moi
 `

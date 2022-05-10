@@ -42,6 +42,21 @@
 
   ComfyJS.onChat = (user, message, flags, self, extra) => {
 
+    if (customMode == "chat") {
+      computeMessage(message, user);
+    }
+  }
+
+  ComfyJS.onCommand = (user, command, message, flags, extra) => {
+    if (customMode == "command" && command == customCommand) {
+      computeMessage(message, user);
+    }
+  }
+
+  document.getElementById("tbf").innerHTML = computedtext;
+
+
+  function computeMessage(message, user) {
     var ok = true;
     var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàâîôûïöäüë"
     for (var i = 0; i < message.length; i++) {
@@ -67,15 +82,13 @@
     }
   }
 
-  document.getElementById("tbf").innerHTML = computedtext;
-
 
   function computeText(texte) {
     var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàâœîôûïöäüë"
     var computedtext = ""
     var lines = texte.split('\n')
     lines.shift();
-    console.log(lines);
+    
     var begin = 0;
     var end = 0;
     var outputline = "";
