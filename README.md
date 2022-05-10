@@ -10,3 +10,5 @@ Font, line space, font colors...
 In config file, first put your channel name, then paste the text you want your chat to find between the two `
 
 First line must be the answer.
+
+![image](https://user-images.githubusercontent.com/64203596/167640407-f63c72ba-c251-4712-b5b8-f7cd7ad7c4bb.png)
