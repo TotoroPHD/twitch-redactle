@@ -1,8 +1,20 @@
-body
-{
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+body {
   background-color: black;
-  font-family: "Segoe UI";
-  line-height: normal;
+  font-family: 'Courier Prime', monospace;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .notfound {

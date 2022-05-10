@@ -23,8 +23,8 @@
       <table class="w3-table w3-striped">
         <tr>
           <th>Pseudo</th>
-          <th>Proposition</th>
-          <th>Occurences</th>
+          <th>Mot</th>
+          <th>Nombre</th>
         </tr>
       </table>
     </div>
@@ -36,22 +36,29 @@
   var begin = "<table class=\"w3-table w3-striped\"><tr><th>Pseudo</th><th>Proposition</th><th>Occurences</th></tr>"
   var propositions = ""
   var end = "</table>"
+  var found = false;
 
   var computedtext = computeText(texte)
 
   ComfyJS.onChat = (user, message, flags, self, extra) => {
 
-    if (!message.includes(" ") && (message.length <= 26)) {
+    var ok = true;
+    var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàîôûïöäüë"
+    for (var i = 0; i < message.length; i++) {
+      if (!alphabet.includes(message[i].toLowerCase())) ok = false;
+    }
 
+    if (ok && message.length <= 26 && !found) {
       var allOccurences = document.getElementsByClassName(message);
       for (var i = 0; i < allOccurences.length; i++) {
         allOccurences[i].classList.remove("notfound");
       }
 
-      propositions = "<tr>" + "<td>" + user + "</td>" + "<td>" + message + "</td>" + "<td>" + allOccurences.length + "</td>" + "</tr>" + propositions
+      propositions = "<tr>" + "<td>" + user + "</td>" + "<td>" + message.toLowerCase() + "</td>" + "<td>" + allOccurences.length + "</td>" + "</tr>" + propositions
       document.getElementById("words").innerHTML = begin + propositions + end
 
       if (!document.getElementById("tbf").innerHTML.split('</h1>')[0].includes("notfound")) {
+        found = true;
         var allOccurences = document.getElementsByClassName("thisisaword");
         for (var i = 0; i < allOccurences.length; i++) {
           allOccurences[i].classList.remove("notfound");
@@ -62,26 +69,46 @@
 
   document.getElementById("tbf").innerHTML = computedtext;
 
+
   function computeText(texte) {
+    var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàîôûïöäüë"
     var computedtext = ""
     var lines = texte.split('\n')
     lines.shift();
-
+    console.log(lines);
+    var begin = 0;
+    var end = 0;
+    var outputline = "";
     for (var i = 0; i < lines.length; i++) {
-      var words = lines[i].split(" ");
-      var curline = "";
-      for (var j = 0; j < words.length; j++) {
-        words[j] = "<span class=\"notfound thisisaword " + words[j] + "\">" + words[j] + "</span>"
-        curline += words[j] + " ";
+      outputline = "";
+      if (lines[i].length > 0) {
+        var newword = "";
+        for (var j = 0; j < lines[i].length; j++) {
+          if (alphabet.includes(lines[i][j].toLowerCase())) {
+            newword += lines[i][j]
+          }
+          else {
+            if (newword.length > 0) {
+              outputline += "<span class=\"notfound thisisaword " + newword + "\">" + newword + "</span>"
+              newword = ""
+            }
+            outputline += lines[i][j]
+          }
+        }
+        if (newword.length > 0) {
+          outputline += "<span class=\"notfound thisisaword " + newword + "\">" + newword + "</span>"
+          newword = ""
+        }
       }
 
-      lines[i] = curline;
-
+      else {
+        outputline = "";
+      }
       if (i == 0) {
-        lines[i] = "<h1>" + lines[i] + "</h1>"
+        lines[i] = "<h1>" + outputline + "</h1>"
       }
       else {
-        lines[i] = "<p>" + lines[i] + "</p>"
+        lines[i] = "<p>" + outputline + "</p>"
       }
 
       computedtext += lines[i];
