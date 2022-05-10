@@ -43,7 +43,7 @@
   ComfyJS.onChat = (user, message, flags, self, extra) => {
 
     var ok = true;
-    var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàîôûïöäüë"
+    var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890éèêçùàâîôûïöäüë"
     for (var i = 0; i < message.length; i++) {
       if (!alphabet.includes(message[i].toLowerCase())) ok = false;
     }
