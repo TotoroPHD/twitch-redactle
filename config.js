@@ -1,16 +1,16 @@
 var channel = "YourChannel"
 
 // Choisissez le mode d'input, soit message chat directement, soit par commande. 
-var customMode = "chat" // or command
+var customMode = "chat" // chat or command
 
 // Choissez la commande d'input : !customCommand input
 var customCommand = "word"
 
-// METTEZ LE TEXTE A TROUVER ENTRE LES DEUX `
-// La première ligne est le titre à trouver
+// La réponse à trouver
+var answer = "San Francisco"
 
+// Le texte à afficher sous la réponse
 var texte = `
-San Francisco
 C'est une maison bleue
 Adossée à la colline
 On y vient à pied
