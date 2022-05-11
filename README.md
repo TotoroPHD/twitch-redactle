@@ -1,4 +1,11 @@
 # twitch-redactle
+
+UPDATE 12/05/2022 :
+- Separating answer and text
+- light green background when occurences > 0
+- you can now type the correct full answer
+
+
 A Redactle like game for Twitch
 
 Based on Redactle by John Turner https://twitter.com/RedactleGame
