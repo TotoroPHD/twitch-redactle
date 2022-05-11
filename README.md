@@ -2,7 +2,7 @@
 
 Based on Redactle by John Turner https://twitter.com/RedactleGame
 
-PUB FR: Retrouvez-moi un vendredi sur deux sur twitch pour des jeux / quiz sur twitch.tv/totorophd
+PUB FR: Retrouvez-moi un vendredi sur deux sur twitch pour des jeux / quiz sur https://twitch.tv/totorophd
 
 # How to make it work :
 Just download the code as ZIP and unzip somewhere on your computer. Keep config.js and game.html at the same place.
