@@ -1,15 +1,18 @@
 var channel = "YourChannel"
 
-// Choisissez le mode d'input, soit message chat directement, soit par commande. 
-var customMode = "chat" // chat or command
+// Choose input mode, either directly from chat or with a command before.
+var inputMode = "chat" // chat or command
 
-// Choissez la commande d'input : !customCommand input
-var customCommand = "word"
+// Choose custom input command : !customCommand input
+var inputCommand = "word"
 
-// La réponse à trouver
+// Choose accent mode. If true, then accent must be correct. If false, accents won't matter. 
+var accentMode = true
+
+// The correct answer to be found
 var answer = "San Francisco"
 
-// Le texte à afficher sous la réponse
+// Text to be displayed below the answer/title
 var texte = `
 C'est une maison bleue
 Adossée à la colline
