@@ -23,6 +23,11 @@ You can set the game mode as :
  
 # twitch-redactle
 
+UPDATE #2 12/05/2022 :
+- Adding accent mode. If true, accents must be correct. If false, accent are not taken into account.
+- Adding light red if word has already been proposed
+- Adding more CSS customization (propositions color when found, not found, already proposed)
+
 UPDATE 12/05/2022 :
 - Separating answer and text
 - light green background when occurences > 0
