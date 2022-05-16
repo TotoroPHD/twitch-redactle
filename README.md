@@ -23,6 +23,9 @@ You can set the game mode as :
  
 # twitch-redactle
 
+UPDATE #3 16/05/2022 : 
+- Adding whitelist : Now you can add words in the var whitelist in config.js that will not be hidden at beginning
+
 UPDATE #2 12/05/2022 :
 - Adding accent mode. If true, accents must be correct. If false, accent are not taken into account.
 - Adding light red if word has already been proposed
