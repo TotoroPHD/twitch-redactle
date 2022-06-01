@@ -6,13 +6,13 @@ var inputMode = "chat" // chat or command
 // Choose custom input command : !customCommand input
 var inputCommand = "word"
 
-// Choose accent mode. If true, then accent must be correct. If false, accents won't matter. 
+// Choose accent mode. If true, then accent must be correct. If false, accents won't matter.
 var accentMode = true
 
 // The correct answer to be found
 var answer = "San Francisco"
 
-// Here are the words that will be displayed at the beginning 
+// Here are the words that will be displayed at the beginning
 var whitelist = ["est", "un", "du", "de", "des", "c", "à", "a", "et", "l", "le", "la", "les" ]
 
 // Text to be displayed below the answer/title
