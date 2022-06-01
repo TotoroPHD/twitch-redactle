@@ -6,7 +6,6 @@ body {
   font-family: 'Courier Prime', monospace;
 }
 
-
 /* change answer title here */
 h1 {
   font-size: 50px;
@@ -24,6 +23,10 @@ p {
 .notfound {
   color: grey;
   background-color: grey;
+}
+
+.thisisaword {
+  transition: color 1s, background-color 1s;
 }
 
 .correctProposition
@@ -44,7 +47,7 @@ p {
 .totoroSplash  {
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
-  color: DarkSlateGrey; 
+  color: DarkSlateGrey;
   text-align: center;
   margin-top:0px;
   margin-bottom:0px;
